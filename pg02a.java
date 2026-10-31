@@ -28,12 +28,22 @@ class Employee {
 
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         LinkedList<Employee> employees = new LinkedList<>();
 
-        employees.add(new Employee(101, "Arun", "IT", "Developer"));
-        employees.add(new Employee(102, "Raj", "HR", "Manager"));
-        employees.add(new Employee(103, "Vani", "Finance", "Accountant"));
-        employees.add(new Employee(104, "Harshitha", "IT", "Tester"));
+        System.out.print("Enter number of employees: ");
+        int numberOfEmployees = Integer.parseInt(sc.nextLine().trim());
+        for (int i = 0; i < numberOfEmployees; i++) {
+            System.out.print("Enter employee ID: ");
+            int id = Integer.parseInt(sc.nextLine().trim());
+            System.out.print("Enter name: ");
+            String name = sc.nextLine();
+            System.out.print("Enter department: ");
+            String department = sc.nextLine();
+            System.out.print("Enter designation: ");
+            String designation = sc.nextLine();
+            employees.add(new Employee(id, name, department, designation));
+        }
 
         // Display all employees
         System.out.println("Employee List:");
@@ -42,9 +52,8 @@ public class Main {
         }
 
         // Search employee using employee ID
-        Scanner sc = new Scanner(System.in);
         System.out.print("Enter Employee ID to search: ");
-        int searchId = sc.nextInt();
+        int searchId = Integer.parseInt(sc.nextLine().trim());
 
         boolean found = false;
 
