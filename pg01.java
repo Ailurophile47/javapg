@@ -34,12 +34,18 @@ class NameComparator implements Comparator<Student> {
 public class Main {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
         List<Student> list = new ArrayList<>();
 
-        list.add(new Student(103, "Apeksha"));
-        list.add(new Student(101, "Rohit"));
-        list.add(new Student(104, "Sneha"));
-        list.add(new Student(102, "Vivek"));
+        System.out.print("Enter number of students: ");
+        int numberOfStudents = Integer.parseInt(sc.nextLine().trim());
+        for (int i = 0; i < numberOfStudents; i++) {
+            System.out.print("Enter roll number: ");
+            int rollNo = Integer.parseInt(sc.nextLine().trim());
+            System.out.print("Enter name: ");
+            String name = sc.nextLine();
+            list.add(new Student(rollNo, name));
+        }
 
         // Display original list
         System.out.println("Original List:");
@@ -80,8 +86,10 @@ public class Main {
         }
 
         // Demonstrate RandomAccess
-        if (list instanceof RandomAccess) {
+        if (list instanceof RandomAccess && list.size() > 2) {
             System.out.println("\nAccess element at index 2: " + list.get(2));
         }
+
+        sc.close();
     }
 }

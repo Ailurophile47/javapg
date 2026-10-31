@@ -43,12 +43,20 @@ class MarksComparator implements Comparator<Student> {
 public class Main {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
         List<Student> list = new ArrayList<>();
 
-        list.add(new Student(103, "Apeksha", 85));
-        list.add(new Student(101, "Rohit", 92));
-        list.add(new Student(104, "Sneha", 78));
-        list.add(new Student(102, "Vivek", 88));
+        System.out.print("Enter number of students: ");
+        int numberOfStudents = Integer.parseInt(sc.nextLine().trim());
+        for (int i = 0; i < numberOfStudents; i++) {
+            System.out.print("Enter roll number: ");
+            int rollNo = Integer.parseInt(sc.nextLine().trim());
+            System.out.print("Enter name: ");
+            String name = sc.nextLine();
+            System.out.print("Enter marks: ");
+            int marks = Integer.parseInt(sc.nextLine().trim());
+            list.add(new Student(rollNo, name, marks));
+        }
 
         System.out.println("Original Student Records:");
         for (Student s : list) {
@@ -99,8 +107,10 @@ public class Main {
         }
 
         // Demonstrate RandomAccess
-        if (list instanceof RandomAccess) {
+        if (list instanceof RandomAccess && list.size() > 2) {
             System.out.println("\nAccess element at index 2: " + list.get(2));
         }
+
+        sc.close();
     }
 }

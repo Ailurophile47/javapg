@@ -22,17 +22,34 @@ class Address {
 }
 
 public class Main {
+    static Address readAddress(Scanner sc) {
+        System.out.print("Enter name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter street: ");
+        String street = sc.nextLine();
+        System.out.print("Enter city: ");
+        String city = sc.nextLine();
+        System.out.print("Enter state: ");
+        String state = sc.nextLine();
+        System.out.print("Enter code: ");
+        String code = sc.nextLine();
+        return new Address(name, street, city, state, code);
+    }
+
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         LinkedList<Address> ml = new LinkedList<>();
 
         // Add elements to the linked list
-        ml.add(new Address("Arun", "80 Feet Rd", "Banashankari", "Bengaluru", "- 560085"));
-        ml.add(new Address("Raj", "Passege Rd", "Jayanagar", "Mysore", "- 542156"));
-        ml.add(new Address("Vani", "N G V Main Rd", "JP Nagar", "Bengaluru", "- 560087"));
-        ml.add(new Address("Harshitha", "MV Rd", "Banashankari", "Bengaluru", ""));
+        System.out.print("Enter number of addresses: ");
+        int numberOfAddresses = Integer.parseInt(sc.nextLine().trim());
+        for (int i = 0; i < numberOfAddresses; i++) {
+            ml.add(readAddress(sc));
+        }
 
         // Insert at index 1
-        ml.add(1, new Address("Ram", "100 Feet Rd", "RR Nagar", "Bengaluru", "- 560088"));
+        System.out.println("Enter address to insert at index 1:");
+        ml.add(Math.min(1, ml.size()), readAddress(sc));
 
         // Display original mailing list
         System.out.println("Original mailing list:");
@@ -41,7 +58,9 @@ public class Main {
         }
 
         // Remove Vani's address
-        ml.removeIf(a -> a.toString().contains("Vani"));
+        System.out.print("Enter name whose address should be removed: ");
+        String nameToRemove = sc.nextLine();
+        ml.removeIf(a -> a.toString().contains(nameToRemove));
 
         // Display list after deletion
         System.out.println("Mailing list after deletions:");
@@ -62,5 +81,7 @@ public class Main {
         for (Address element : ml) {
             System.out.println(element + "\n");
         }
+
+        sc.close();
     }
 }

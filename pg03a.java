@@ -4,8 +4,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String D1 = "Hello, Hi!";
-        String D2 = "hello, hi!";
+        System.out.print("Enter D1: ");
+        String D1 = sc.nextLine();
+        System.out.print("Enter D2: ");
+        String D2 = sc.nextLine();
+        System.out.print("Enter substring start index: ");
+        int start = Integer.parseInt(sc.nextLine().trim());
+        System.out.print("Enter substring end index: ");
+        int end = Integer.parseInt(sc.nextLine().trim());
 
         System.out.println("Original String: " + D1);
         System.out.println("Character at index 1: " + D1.charAt(1));
@@ -28,7 +34,7 @@ public class Main {
         System.out.println("Lowercase: " + D1.toLowerCase());
         System.out.println("Uppercase: " + D1.toUpperCase());
         System.out.println("Replace 'Hi' with 'Java': " + D1.replace("Hi", "Java"));
-        System.out.println("Substring (7 to 9): " + D1.substring(7, 9));
+        System.out.println("Substring (" + start + " to " + end + "): " + D1.substring(start, end));
         System.out.println("Concatenation: " + D1.concat(" Let's learn Java."));
 
         System.out.println("Split by comma:");
